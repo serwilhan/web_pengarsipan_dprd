@@ -1,9 +1,23 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Admin extends CI_Controller {
+class LoginPage extends CI_Controller {
+
+    function __construct() {
+        parent::__construct();
+        $this->load->library('form_validation');
+    }
 
     public function index() {
-        echo 'auth/index';
+
+        $this->form_validation->set_rules('nik', 'NIK', 'required');
+        $this->form_validation->set_rules('password', 'Password', 'required');
+
+        if ($this->form_validation->run() == false) {
+            $data['title'] = 'E-Dokumen - Login';
+            $this->load->view('auth/login');
+        } else {
+            redirect(base_url('dashboard'));
+        }
     }
 }

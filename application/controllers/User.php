@@ -1,15 +1,15 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Dashboard extends CI_Controller {
+class User extends CI_Controller {
 
     public function index() {
-        $data['page'] = 'Dashboard';
-        $data['title'] = 'E-Dokumen - Dashboard';
+        $data['page'] = 'User';
+        $data['title'] = 'E-Dokumen - User';
         $this->load->view('dashboard/wrapper/header', $data);
         $this->load->view('dashboard/wrapper/sidebar', $data);
         $this->load->view('dashboard/wrapper/navbar');
-        $this->load->view('dashboard/index');
+        $this->load->view('dashboard/user');
         $this->load->view('dashboard/wrapper/footer');
     }
 }

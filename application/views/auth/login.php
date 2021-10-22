@@ -10,13 +10,13 @@
 </head>
 
 <body>
-    <img class="wave" src="assets/img/2.png">
+    <img class="wave" src="<?= base_url('assets'); ?>/img/2.png">
     <div class="container">
         <div class="img">
             <img src="<?= base_url('assets'); ?>/img/0.svg">
         </div>
         <div class="login-content">
-            <form action=<?php echo "Dashboard" ?>>
+            <form action=<?= base_url('loginpage'); ?> method="POST">
                 <img src="<?= base_url('assets'); ?>/img/logo1.png">
                 <h2 class="title">Login</h2>
                 <div class="input-div one">
@@ -25,7 +25,8 @@
                     </div>
                     <div class="div">
                         <h5>NIK</h5>
-                        <input type="text" class="input">
+                        <input type="text" class="input" name="nik" id="nik">
+                        <?php echo form_error('nik'); ?>
                     </div>
                 </div>
                 <div class="input-div pass">
@@ -34,7 +35,8 @@
                     </div>
                     <div class="div">
                         <h5>Password</h5>
-                        <input type="password" class="input">
+                        <input type="password" class="input" name="password" id="password">
+                        <?php echo form_error('password'); ?>
                     </div>
                 </div>
 
