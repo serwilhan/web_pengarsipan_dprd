@@ -7,6 +7,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.1.1/chart.min.js"></script>
 <script src="<?= base_url('assets'); ?>/js/scripts.js"></script>
 <script src="<?= base_url('assets'); ?>/js/charts.js"></script>
+
 </body>
 
 </html>
