@@ -1,3 +1,7 @@
+<div class="btn">
+    <a href="btn-tambaharsip.html" class="btn btn-primary"><i class="bi bi-pencil-square"></i>Tambah Arsip</a>
+</div>
+
 <table class="table">
     <thead>
         <th>No.</th>

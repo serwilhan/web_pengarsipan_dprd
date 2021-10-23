@@ -9,7 +9,7 @@ class SuratKeluar extends CI_Controller {
         $this->load->view('dashboard/wrapper/header', $data);
         $this->load->view('dashboard/wrapper/sidebar', $data);
         $this->load->view('dashboard/wrapper/navbar');
-        $this->load->view('dashboard/surat-masuk');
+        $this->load->view('dashboard/surat-keluar');
         $this->load->view('dashboard/wrapper/footer');
     }
 }

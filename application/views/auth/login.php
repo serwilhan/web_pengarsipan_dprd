@@ -33,7 +33,7 @@
                     </div>
                     <div class="div">
                         <h5>NIK</h5>
-                        <input type="text" class="input" name="nik" id="nik">
+                        <input type="text" class="input" name="nik" id="nik" value="<?= set_value('nik'); ?>">
                         <?php echo form_error('nik', '<small class="text-danger">', '</small>'); ?>
                     </div>
                 </div>

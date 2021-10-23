@@ -10,13 +10,14 @@ class LoginPage extends CI_Controller {
 
     public function index() {
 
-        $this->form_validation->set_rules('nik', 'NIK', 'required');
-        $this->form_validation->set_rules('password', 'Password', 'required');
+        $this->form_validation->set_rules('nik', 'NIK', 'required|trim');
+        $this->form_validation->set_rules('password', 'Password', 'required|trim');
 
         if ($this->form_validation->run() == false) {
             $data['title'] = 'E-Dokumen - Login';
             $this->load->view('auth/login');
         } else {
+
             redirect(base_url('dashboard'));
         }
     }
