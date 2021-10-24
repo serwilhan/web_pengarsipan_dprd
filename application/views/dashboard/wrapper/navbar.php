@@ -4,10 +4,10 @@
             <i class="bi bi-list"></i>
             <span><?= $page ?></span>
         </button>
-        <form action="" class="form">
+        <!-- <form action="" class="form">
             <input type="text" placeholder="Busca">
             <button type="submit"><i class="bi bi-search"></i></button>
-        </form>
+        </form> -->
         <div class="box-profile">
             <img src="<?= base_url('assets'); ?>/img/1.jpg" alt="">
             <p class="name">

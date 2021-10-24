@@ -35,7 +35,7 @@
         <div class="mb-3">
             <label for="formFile" class="form-label">Upload Foto</label>
             <input class="form-control" type="file" id="foto" name="foto">
-            <?php echo form_error('foto', '<small class="text-danger">', '</small>'); ?>
+
 
         </div>
 

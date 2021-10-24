@@ -27,7 +27,7 @@ class User extends CI_Controller {
             'min_length' => 'Masukan minimal 6 karakter.'
         ]);
         $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]');
-        $this->form_validation->set_rules('foto', 'Foto', 'required');
+
 
         if ($this->form_validation->run() == false) {
             $data['page'] = 'User';
@@ -40,7 +40,7 @@ class User extends CI_Controller {
         } else {
             $data = [
                 'nama' => $this->input->post('nama'),
-                'nomor_telepon' => $this->input->post('nama'),
+                'nomor_telepon' => $this->input->post('notelpon'),
                 'pas_foto' => 'default.jpg',
                 'nik' => $this->input->post('nik'),
                 'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
