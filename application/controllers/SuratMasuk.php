@@ -11,8 +11,8 @@ class SuratMasuk extends CI_Controller {
         $data_db['data_suratmasuk'] = $this->m_suratmasuk->get_data();
 
         $this->load->view('dashboard/wrapper/header', $data);
-        $this->load->view('dashboard/wrapper/sidebar', $data);
         $this->load->view('dashboard/wrapper/navbar');
+        $this->load->view('dashboard/wrapper/sidebar', $data);
         $this->load->view('dashboard/surat-masuk', $data_db);
         $this->load->view('dashboard/wrapper/footer');
     }

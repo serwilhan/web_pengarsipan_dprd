@@ -1,16 +1,80 @@
-<nav class="nav">
-    <a href="" class="logo">
-        <i class="bi bi-file-earmark-plus"></i>
-        <span> E-Dokumen </span>
+<!-- Main Sidebar Container -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="index3.html" class="brand-link">
+        <img src="<?= base_url('assets'); ?>/dist/img/DPRDLogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+
+        <span class="brand-text font-weight-light">
+            <img src="<?= base_url('assets'); ?>/dist/img/DPRDLogo2.png" alt="AdminLTogo" style="margin-left: 30px;">
+        </span>
     </a>
 
-    <ul class="menu">
-        <li class="active"><a href="<?= base_url('dashboard'); ?>"><i class="bi bi-clipboard-data"></i><span>Dashboard</span></a></li>
-        <li class="active"><a href="#"><i class="bi bi-folder-plus"></i><span>Transaksi Surat</span></a></li>
-        <ul class="sub-menu">
-            <li><a href="<?= base_url('suratmasuk'); ?>">Surat Masuk</a></li>
-            <li><a href="<?= base_url('suratkeluar'); ?>">Surat Keluar</a></li>
-        </ul>
-        <li class="active"><a href="<?= base_url('user'); ?>"><i class="bi bi-person"></i><span>User</span></a></li>
-        <li class="active"><a href="<?= base_url('pengaturan'); ?>"><i class="bi bi-gear"></i><span>Pengaturan</span></a></li>
-</nav>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+                <img src="<?= base_url('assets'); ?>/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+            </div>
+            <div class="info">
+                <a href="#" class="d-block">Alexander Pierce</a>
+            </div>
+        </div>
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+                <li class="nav-item">
+                    <a href="<?= base_url('Dashboard') ?>" class="nav-link active">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            Dashboard
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-copy"></i>
+                        <p>
+                            Transaksi Surat
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?= base_url("SuratMasuk"); ?>" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Surat Masuk</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= base_url("SuratKeluar"); ?>" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Surat Keluar</p>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a href="<?= base_url('User'); ?>" class="nav-link">
+                        <i class="nav-icon fas fa-user"></i>
+                        <p>User</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="pages/kanban.html" class="nav-link">
+                        <i class="nav-icon fas fa-cog"></i>
+                        <p>Pengaturan</p>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+</aside>

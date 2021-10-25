@@ -1,19 +1,49 @@
-</main>
-<footer class="footer">
-    <span>Copyright <i class="material-icons" style="font-size:12px">copyright</i> 2021, DPRD Kota Makassar</span>
-</footer>
+ <footer class="main-footer">
+     <strong>Copyright &copy; 2021 <a href="https://adminlte.io">DPRD Kota Makassar</a>.</strong>
+ </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.1.1/chart.min.js"></script>
-<script src="<?= base_url('assets'); ?>/js/scripts.js"></script>
-<script src="<?= base_url('assets'); ?>/js/charts.js"></script>
+ <!-- Control Sidebar -->
+ <aside class="control-sidebar control-sidebar-dark">
+     <!-- Control sidebar content goes here -->
+ </aside>
+ <!-- /.control-sidebar -->
+ </div>
+ <!-- ./wrapper -->
 
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+ <!-- jQuery -->
+ <script src="<?= base_url('assets'); ?>/plugins/jquery/jquery.min.js"></script>
+ <!-- jQuery UI 1.11.4 -->
+ <script src="<?= base_url('assets'); ?>/plugins/jquery-ui/jquery-ui.min.js"></script>
+ <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+ <script>
+     $.widget.bridge('uibutton', $.ui.button)
+ </script>
+ <!-- Bootstrap 4 -->
+ <script src="<?= base_url('assets'); ?>/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+ <!-- ChartJS -->
+ <script src="<?= base_url('assets'); ?>/plugins/chart.js/Chart.min.js"></script>
+ <!-- Sparkline -->
+ <script src="<?= base_url('assets'); ?>/plugins/sparklines/sparkline.js"></script>
+ <!-- JQVMap -->
+ <script src="<?= base_url('assets'); ?>/plugins/jqvmap/jquery.vmap.min.js"></script>
+ <script src="<?= base_url('assets'); ?>/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+ <!-- jQuery Knob Chart -->
+ <script src="<?= base_url('assets'); ?>/plugins/jquery-knob/jquery.knob.min.js"></script>
+ <!-- daterangepicker -->
+ <script src="<?= base_url('assets'); ?>/plugins/moment/moment.min.js"></script>
+ <script src="<?= base_url('assets'); ?>/plugins/daterangepicker/daterangepicker.js"></script>
+ <!-- Tempusdominus Bootstrap 4 -->
+ <script src="<?= base_url('assets'); ?>/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+ <!-- Summernote -->
+ <script src="<?= base_url('assets'); ?>/plugins/summernote/summernote-bs4.min.js"></script>
+ <!-- overlayScrollbars -->
+ <script src="<?= base_url('assets'); ?>/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+ <!-- AdminLTE App -->
+ <script src="<?= base_url('assets'); ?>/dist/js/adminlte.js"></script>
+ <!-- AdminLTE for demo purposes -->
+ <script src="<?= base_url('assets'); ?>/dist/js/demo.js"></script>
+ <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+ <script src="<?= base_url('assets'); ?>/dist/js/pages/dashboard.js"></script>
+ </body>
 
-</body>
-
-</html>
+ </html>

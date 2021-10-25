@@ -11,10 +11,14 @@ class User extends CI_Controller {
     public function index() {
         $data['page'] = 'User';
         $data['title'] = 'E-Dokumen - User';
+
+        $this->load->model('m_user');
+        $data_db['data_user'] = $this->m_user->get_data();
+
         $this->load->view('dashboard/wrapper/header', $data);
-        $this->load->view('dashboard/wrapper/sidebar', $data);
         $this->load->view('dashboard/wrapper/navbar');
-        $this->load->view('dashboard/user');
+        $this->load->view('dashboard/wrapper/sidebar', $data);
+        $this->load->view('dashboard/user', $data_db);
         $this->load->view('dashboard/wrapper/footer');
     }
 
@@ -33,9 +37,9 @@ class User extends CI_Controller {
             $data['page'] = 'User';
             $data['title'] = 'E-Dokumen - User';
             $this->load->view('dashboard/wrapper/header', $data);
-            $this->load->view('dashboard/wrapper/sidebar', $data);
             $this->load->view('dashboard/wrapper/navbar');
-            $this->load->view('dashboard/form-tambah-user');
+            $this->load->view('dashboard/wrapper/sidebar', $data);
+            $this->load->view('dashboard/user');
             $this->load->view('dashboard/wrapper/footer');
         } else {
             $data = [
