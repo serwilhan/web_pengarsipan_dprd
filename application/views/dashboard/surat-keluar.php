@@ -48,7 +48,7 @@
                                         <th>Perihal</th>
                                         <th>Penerima</th>
                                         <th>Tanggal Surat</th>
-                                        <th>Opsi</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -62,9 +62,8 @@
                                             <td data-label="Pengirim"><?= $data_sk['penerima']; ?></td>
                                             <td data-label="Tanggal Surat"><?= $data_sk['tanggal_surat']; ?></td>
                                             <td data-label="Opsi">
-                                                <button type="button" class="btn btn-light"><i class="bi bi-cloud-download"></i></button>
-                                                <button type="button" class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
-                                                <button type="button" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                                                <button type="button" class="btn btn-light btn-sm"><i class="bi bi-cloud-download">Detail</i></button>
+
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>

@@ -45,9 +45,9 @@ class User extends CI_Controller {
             $data = [
                 'nama' => $this->input->post('nama'),
                 'nomor_telepon' => $this->input->post('notelpon'),
-                'pas_foto' => 'default.jpg',
+                'pas_foto' => 'default.png',
                 'nik' => $this->input->post('nik'),
-                'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
+                'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
                 'role_id' => 2,
                 'is_active' => 1,
                 'date_created' => time()

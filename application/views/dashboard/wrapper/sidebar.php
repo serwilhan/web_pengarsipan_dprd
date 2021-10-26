@@ -14,10 +14,10 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="<?= base_url('assets'); ?>/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                <img src="<?= base_url('assets/dist/img/profile/') . $user['pas_foto']; ?>" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Alexander Pierce</a>
+                <a href="#" class="d-block"><?= $user['nama']; ?></a>
             </div>
         </div>
 
@@ -56,7 +56,6 @@
                                 <p>Surat Keluar</p>
                             </a>
                         </li>
-
                     </ul>
                 </li>
 
@@ -70,7 +69,22 @@
                     <a href="pages/kanban.html" class="nav-link">
                         <i class="nav-icon fas fa-cog"></i>
                         <p>Pengaturan</p>
+                        <i class="fas fa-angle-left right"></i>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Edit Profile</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a type="button" data-toggle="modal" data-target="#modal-default"" class=" nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Logout</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </nav>
@@ -78,3 +92,26 @@
     </div>
     <!-- /.sidebar -->
 </aside>
+
+<div class="modal fade" id="modal-default">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Logout</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Apakah anda yakin untuk Logout?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Kembali</button>
+                <a href="<?= base_url("LoginPage/logout"); ?>" class="btn btn-danger btn-sm">Logout</a>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

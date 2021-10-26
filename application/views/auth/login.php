@@ -3,7 +3,7 @@
 
 <head>
     <title>E-dokumen</title>
-    <link rel="stylesheet" type="text/css" href="<?= base_url('assets'); ?>/css/style.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url('assets'); ?>/dist/css/login-style.css">
     <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a81368914c.js"></script>
 
@@ -18,14 +18,15 @@
 </head>
 
 <body>
-    <img class="wave" src="<?= base_url('assets'); ?>/img/2.png">
+    <img class="wave" src="<?= base_url('assets'); ?>/dist/img/2.png">
     <div class="container">
         <div class="img">
-            <img src="<?= base_url('assets'); ?>/img/0.svg">
+            <img src="<?= base_url('assets'); ?>/dist/img/0.svg">
         </div>
         <div class="login-content">
+
             <form action=<?= base_url('loginpage'); ?> method="POST">
-                <img src="<?= base_url('assets'); ?>/img/logo1.png">
+                <img src="<?= base_url('assets'); ?>/dist/img/logo1.png">
                 <h2 class="title">Login</h2>
                 <div class="input-div one">
                     <div class="i">
@@ -37,6 +38,7 @@
                         <?php echo form_error('nik', '<small class="text-danger">', '</small>'); ?>
                     </div>
                 </div>
+
                 <div class="input-div pass">
                     <div class="i">
                         <i class="fas fa-lock"></i>
@@ -50,9 +52,11 @@
 
                 <input type="submit" class="btn" value="Login">
             </form>
+
         </div>
     </div>
-    <script type="text/javascript" src="<?= base_url('assets'); ?>/js/main.js"></script>
+
+    <script type="text/javascript" src="<?= base_url('assets'); ?>/dist/js/main.js"></script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
