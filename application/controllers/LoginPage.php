@@ -35,11 +35,13 @@ class LoginPage extends CI_Controller {
             if ($user['is_active'] == 1) {
                 //Password Verify
                 if (password_verify($password, $user['password'])) {
+                    //Verify Success
                     $data = [
                         'nik' => $user['nik'],
                         'role_id' => $user['role_id']
                     ];
                     $this->session->set_userdata($data);
+
                     redirect('Dashboard');
                 } else {
                     redirect('LoginPage');
@@ -55,6 +57,9 @@ class LoginPage extends CI_Controller {
     public function logout() {
         $this->session->unset_userdata('nik');
         $this->session->unset_userdata('role_id');
+
+        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+                    Logout Successful.</div>');
 
         redirect('LoginPage');
     }

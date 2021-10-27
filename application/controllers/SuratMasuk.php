@@ -8,12 +8,13 @@ class SuratMasuk extends CI_Controller {
         $data['title'] = 'E-Dokumen - Surat Masuk';
 
         $this->load->model('m_suratmasuk');
-        $data_db['data_suratmasuk'] = $this->m_suratmasuk->get_data();
+        $data['data_suratmasuk'] = $this->m_suratmasuk->get_data();
+        $data['user'] = $this->db->get_where('user', ['nik' => $this->session->userdata('nik')])->row_array();
 
         $this->load->view('dashboard/wrapper/header', $data);
         $this->load->view('dashboard/wrapper/navbar');
         $this->load->view('dashboard/wrapper/sidebar', $data);
-        $this->load->view('dashboard/surat-masuk', $data_db);
+        $this->load->view('dashboard/surat-masuk', $data);
         $this->load->view('dashboard/wrapper/footer');
     }
 

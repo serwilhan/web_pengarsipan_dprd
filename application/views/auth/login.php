@@ -28,6 +28,9 @@
             <form action=<?= base_url('loginpage'); ?> method="POST">
                 <img src="<?= base_url('assets'); ?>/dist/img/logo1.png">
                 <h2 class="title">Login</h2>
+
+                <?= $this->session->flashdata('message'); ?>
+
                 <div class="input-div one">
                     <div class="i">
                         <i class="fas fa-user"></i>

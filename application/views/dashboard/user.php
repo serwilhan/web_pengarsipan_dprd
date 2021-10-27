@@ -5,12 +5,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Projects</h1>
+                    <h1>User Management</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Projects</li>
+                        <li class="breadcrumb-item active">User Management</li>
                     </ol>
                 </div>
             </div>
@@ -67,7 +67,7 @@
                             <tr>
                                 <td data-label="No"><?= $no++; ?></td>
                                 <td data-label="Nama">
-                                    <img alt="Avatar" class="table-avatar" src="<?= base_url("assets") ?>/dist/img/default.png">
+                                    <img alt="Avatar" class="table-avatar" src="<?= base_url('assets/dist/img/profile/') . $user['pas_foto']; ?>">
                                     <a style="margin-left: 10px;"><?= $data_usr['nama']; ?></a>
                                 </td>
                                 <td data-label="NIK">
@@ -120,7 +120,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="<?= base_url('User/tambahUser'); ?>" method="POST">
+                <form action="<?= base_url('admin/usermanagement/tambahuser'); ?>" method="POST">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Nama Lengkap</label>
                         <input type="text" class="form-control" aria-describedby="emailHelp" name="nama" id="nama" value="<?= set_value('nama'); ?>">

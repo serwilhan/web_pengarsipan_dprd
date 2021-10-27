@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class User extends CI_Controller {
+class UserManagement extends CI_Controller {
 
     function __construct() {
         parent::__construct();
@@ -14,6 +14,8 @@ class User extends CI_Controller {
 
         $this->load->model('m_user');
         $data_db['data_user'] = $this->m_user->get_data();
+        $data['user'] = $this->db->get_where('user', ['nik' => $this->session->userdata('nik')])->row_array();
+
 
         $this->load->view('dashboard/wrapper/header', $data);
         $this->load->view('dashboard/wrapper/navbar');
@@ -55,7 +57,43 @@ class User extends CI_Controller {
 
             $this->db->insert('user', $data);
 
-            redirect(base_url('user'));
+            redirect(base_url('admin/usermanagement'));
         }
     }
+
+    // public function upload_foto() {
+    //     $this->load->model('m_user');
+    //     $data['current_user'] = $this->auth_model->current_user();
+
+    //     if ($this->input->method() === 'post') {
+    //         // the user id contain dot, so we must remove it
+    //         $file_name = str_replace('.', '', $data['current_user']->id);
+    //         $config['upload_path']          = FCPATH . '/assets/dist/img/profile';
+    //         $config['allowed_types']        = 'jpg|jpeg|png';
+    //         $config['file_name']            = $file_name;
+    //         $config['overwrite']            = true;
+    //         $config['max_size']             = 1000; // 1MB
+    //         $config['max_width']            = 1080;
+    //         $config['max_height']           = 1080;
+
+    //         $this->load->library('upload', $config);
+
+    //         if (!$this->upload->do_upload('foto')) {
+    //             $data['error'] = $this->upload->display_errors();
+    //         } else {
+    //             $uploaded_data = $this->upload->data();
+
+    //             $new_data = [
+    //                 'id' => $data['current_user']->id,
+    //                 'foto' => $uploaded_data['file_name'],
+    //             ];
+
+    //             if ($this->m_user->update($new_data)) {
+    //                 $this->session->set_flashdata('message', 'Avatar updated!');
+    //                 redirect(site_url('admin/setting'));
+    //             }
+    //         }
+    //     }
+    //     $this->load->view('admin/setting_upload_avatar.php', $data);
+    // }
 }

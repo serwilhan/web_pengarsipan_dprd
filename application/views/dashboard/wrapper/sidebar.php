@@ -21,6 +21,21 @@
             </div>
         </div>
 
+        <!-- QUERY MENU -->
+        <?php
+        $role_id = $this->session->userdata('role_id');
+        $queryMenu = "SELECT `user_menu` . `id`, `menu`
+                        FROM `user_menu`
+                        JOIN `user_access_menu` ON `user_menu` . `id` = `user_access_menu` . `menu_id`
+                        WHERE `user_access_menu`.`role_id` = $role_id
+                        ORDER BY `user_access_menu`.`menu_id` ASC
+                     ";
+
+        $menu = $this->db->query($queryMenu)->result_array();
+        ?>
+
+
+
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -35,56 +50,59 @@
                     </a>
                 </li>
 
+                <li class="nav-header">TRANSAKSI SURAT</li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-copy"></i>
-                        <p>
-                            Transaksi Surat
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
+                    <a href="<?= base_url("SuratMasuk"); ?>" class="nav-link">
+                        <i class="nav-icon fas fa-file-download"></i>
+                        <p>Surat Masuk</p>
                     </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="<?= base_url("SuratMasuk"); ?>" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Surat Masuk</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?= base_url("SuratKeluar"); ?>" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Surat Keluar</p>
-                            </a>
-                        </li>
-                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= base_url("SuratKeluar"); ?>" class="nav-link">
+                        <i class="nav-icon fas fa-file-upload"></i>
+                        <p>Surat Keluar</p>
+                    </a>
                 </li>
 
+                <!-- MENU LOOPING -->
+                <?php foreach ($menu as $m) : ?>
+                    <li class="nav-header"><?= $m['menu']; ?></li>
+
+                    <!-- SUB MENU -->
+                    <?php
+                    $menu_id = $m['id'];
+                    $querySubMenu = "SELECT *
+                                        FROM `user_sub_menu`
+                                        JOIN `user_menu` ON `user_sub_menu` . `menu_id` = `user_menu` . `id`
+                                        WHERE `user_sub_menu`.`menu_id` = $menu_id
+                                        AND `user_sub_menu`.`menu_id` = 1
+                     ";
+
+                    $subMenu = $this->db->query($querySubMenu)->result_array();
+                    ?>
+
+                    <?php foreach ($subMenu as $subm) : ?>
+                        <li class="nav-item">
+                            <a href="<?= base_url($subm['url']); ?>" class="nav-link">
+                                <?= $subm['icon']; ?>
+                                <p><?= $subm['title']; ?></p>
+                            </a>
+                        </li>
+                    <?php endforeach; ?>
+                <?php endforeach; ?>
+
+                <li class="nav-header">PENGATURAN</li>
                 <li class="nav-item">
-                    <a href="<?= base_url('User'); ?>" class="nav-link">
-                        <i class="nav-icon fas fa-user"></i>
-                        <p>User</p>
+                    <a href="<?= base_url('UserProfile'); ?>" class="nav-link">
+                        <i class="nav-icon fas fa-user-edit"></i>
+                        <p>Edit Profile</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="pages/kanban.html" class="nav-link">
-                        <i class="nav-icon fas fa-cog"></i>
-                        <p>Pengaturan</p>
-                        <i class="fas fa-angle-left right"></i>
+                    <a type="button" data-toggle="modal" data-target="#modal-default"" class=" nav-link">
+                        <i class="nav-icon fas fa-sign-out-alt"></i>
+                        <p>Logout</p>
                     </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Edit Profile</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a type="button" data-toggle="modal" data-target="#modal-default"" class=" nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Logout</p>
-                            </a>
-                        </li>
-                    </ul>
                 </li>
             </ul>
         </nav>

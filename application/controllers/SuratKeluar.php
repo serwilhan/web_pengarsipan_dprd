@@ -8,12 +8,14 @@ class SuratKeluar extends CI_Controller {
         $data['title'] = 'E-Dokumen - Surat Keluar';
 
         $this->load->model('m_suratkeluar');
-        $data_db['data_suratkeluar'] = $this->m_suratkeluar->get_data();
+        $data['data_suratkeluar'] = $this->m_suratkeluar->get_data();
+
+        $data['user'] = $this->db->get_where('user', ['nik' => $this->session->userdata('nik')])->row_array();
 
         $this->load->view('dashboard/wrapper/header', $data);
         $this->load->view('dashboard/wrapper/navbar');
         $this->load->view('dashboard/wrapper/sidebar', $data);
-        $this->load->view('dashboard/surat-keluar', $data_db);
+        $this->load->view('dashboard/surat-keluar', $data);
         $this->load->view('dashboard/wrapper/footer');
     }
 
