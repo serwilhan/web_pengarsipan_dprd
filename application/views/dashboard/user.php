@@ -124,13 +124,13 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1">Nama Lengkap</label>
                         <input type="text" class="form-control" aria-describedby="emailHelp" name="nama" id="nama" value="<?= set_value('nama'); ?>">
-                        <?php echo form_error('nik', '<small class="text-danger">', '</small>'); ?>
+
                     </div>
 
                     <div class="form-group">
                         <label for="exampleInputPassword1">NIK</label>
                         <input type="text" class="form-control" id="nik" name="nik" value="<?= set_value('nik'); ?>">
-                        <?php echo form_error('nik', '<small class="text-danger">', '</small>'); ?>
+
                     </div>
 
                     <div class="form-group">
@@ -141,7 +141,7 @@
                     <div class="form-group">
                         <label>Password</label>
                         <input type="password" class="form-control" id="password1" name="password1">
-                        <?php echo form_error('password1', '<small class="text-danger">', '</small>'); ?>
+
                     </div>
 
                     <div class="form-group">
