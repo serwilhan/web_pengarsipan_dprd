@@ -41,8 +41,11 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+
                 <li class="nav-item">
-                    <a href="<?= base_url('Dashboard') ?>" class="nav-link active">
+                    <a href="<?= base_url('Dashboard') ?>" class="nav-link <?php if ($this->uri->segment(1) == "Dashboard") {
+                                                                                echo "active";
+                                                                            } ?>">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
@@ -52,13 +55,17 @@
 
                 <li class="nav-header">TRANSAKSI SURAT</li>
                 <li class="nav-item">
-                    <a href="<?= base_url("SuratMasuk"); ?>" class="nav-link">
+                    <a href="<?= base_url("SuratMasuk"); ?>" class="nav-link <?php if ($this->uri->segment(1) == "SuratMasuk") {
+                                                                                    echo "active";
+                                                                                } ?>">
                         <i class="nav-icon fas fa-file-download"></i>
                         <p>Surat Masuk</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?= base_url("SuratKeluar"); ?>" class="nav-link">
+                    <a href="<?= base_url("SuratKeluar"); ?>" class="nav-link <?php if ($this->uri->segment(1) == "SuratKeluar") {
+                                                                                    echo "active";
+                                                                                } ?>">
                         <i class="nav-icon fas fa-file-upload"></i>
                         <p>Surat Keluar</p>
                     </a>
@@ -83,7 +90,9 @@
 
                     <?php foreach ($subMenu as $subm) : ?>
                         <li class="nav-item">
-                            <a href="<?= base_url($subm['url']); ?>" class="nav-link">
+                            <a href="<?= base_url($subm['url']); ?>" class="nav-link <?php if ($this->uri->segment(2) == "usermanagement") {
+                                                                                            echo "active";
+                                                                                        } ?>" ?>
                                 <?= $subm['icon']; ?>
                                 <p><?= $subm['title']; ?></p>
                             </a>
@@ -93,7 +102,9 @@
 
                 <li class="nav-header">PENGATURAN</li>
                 <li class="nav-item">
-                    <a href="<?= base_url('UserProfile'); ?>" class="nav-link">
+                    <a href="<?= base_url('UserProfile'); ?>" class="nav-link <?php if ($this->uri->segment(1) == "UserProfile") {
+                                                                                    echo "active";
+                                                                                } ?>">
                         <i class="nav-icon fas fa-user-edit"></i>
                         <p>Edit Profile</p>
                     </a>

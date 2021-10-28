@@ -7,6 +7,7 @@ class UserProfile extends CI_Controller {
 
         $data['user'] = $this->db->get_where('user', ['nik' => $this->session->userdata('nik')])->row_array();
 
+
         $this->load->view('dashboard/wrapper/header', $data);
         $this->load->view('dashboard/wrapper/navbar');
         $this->load->view('dashboard/wrapper/sidebar', $data);

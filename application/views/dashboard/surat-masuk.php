@@ -6,6 +6,7 @@
                 <div class="col-sm-6">
                     <h1>Surat Masuk</h1>
                 </div>
+
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -16,8 +17,23 @@
         </div><!-- /.container-fluid -->
     </section>
 
+
     <section class="content">
         <div class="container-fluid">
+
+            <?php if (validation_errors()) : ?>
+                <div class="alert alert-danger my-alert-style" role="alert">
+                    <?= validation_errors(); ?>
+                </div>
+            <?php endif; ?>
+
+            <!-- <?= form_error('no_surat', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
+            <?= form_error('tanggal_surat', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
+            <?= form_error('perihal', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
+            <?= form_error('pengirim', '<div class="alert alert-danger" role="alert">', '</div>'); ?> -->
+
+            <?= $this->session->flashdata('suratmasuk-message'); ?>
+
             <div class="row">
                 <div class="col-12">
                     <div class="card">

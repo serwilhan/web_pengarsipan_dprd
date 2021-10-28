@@ -7,6 +7,7 @@ class SuratKeluar extends CI_Controller {
         $data['page'] = 'Surat Keluar';
         $data['title'] = 'E-Dokumen - Surat Keluar';
 
+
         $this->load->model('m_suratkeluar');
         $data['data_suratkeluar'] = $this->m_suratkeluar->get_data();
 
