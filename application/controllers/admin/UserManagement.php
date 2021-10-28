@@ -25,22 +25,34 @@ class UserManagement extends CI_Controller {
 
     public function tambahUser() {
 
-        $this->form_validation->set_rules('nama', 'Nama Lengkap', 'required|trim');
-        $this->form_validation->set_rules('nik', 'NIK', 'required|trim', 'is_unique[user.nik]');
-        $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[6]|matches[password2]', [
-            'matches' => 'Password tidak sama.',
-            'min_length' => 'Masukan minimal 6 karakter.'
+        $this->form_validation->set_rules('nama', 'Nama Lengkap', 'required|trim', [
+            'required' => "Nama Lengkap tidak boleh kosong."
         ]);
-        $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]');
+        $this->form_validation->set_rules('nik', 'NIK', 'required|trim', 'is_unique[user.nik]', [
+            'required' => "NIK tidak boleh kosong."
+        ]);
+        $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[6]|matches[password2]', [
+            'required' => "Password tidak boleh kosong.",
+            'matches' => 'Password tidak sama.',
+            'min_length' => 'Masukan password minimal 6 karakter.'
+        ]);
+        $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]', [
+            'required' => "Konfirmasi Password tidak boleh kosong."
+        ]);
 
 
         if ($this->form_validation->run() == false) {
             $data['page'] = 'User';
             $data['title'] = 'E-Dokumen - User';
+
+            $this->load->model('m_user');
+            $data_db['data_user'] = $this->m_user->get_data();
+            $data['user'] = $this->db->get_where('user', ['nik' => $this->session->userdata('nik')])->row_array();
+
             $this->load->view('dashboard/wrapper/header', $data);
             $this->load->view('dashboard/wrapper/navbar');
             $this->load->view('dashboard/wrapper/sidebar', $data);
-            $this->load->view('dashboard/user');
+            $this->load->view('dashboard/user', $data_db);
             $this->load->view('dashboard/wrapper/footer');
         } else {
             $data = [
@@ -55,6 +67,9 @@ class UserManagement extends CI_Controller {
             ];
 
             $this->db->insert('user', $data);
+
+            $this->session->set_flashdata('adduser-message', '<div class="alert alert-danger" role="alert">
+            Data berhasil disimpan.</div>');
 
             redirect(base_url('admin/usermanagement'));
         }

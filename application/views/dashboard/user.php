@@ -21,6 +21,14 @@
     <section class="content">
         <!-- Default box -->
         <div class="card">
+            <?php if (validation_errors()) : ?>
+                <div class="alert alert-danger my-alert-style" role="alert">
+                    <?= validation_errors(); ?>
+                </div>
+            <?php endif; ?>
+
+            <?= $this->session->flashdata('adduser-message'); ?>
+
             <div class="card-header">
                 <div class="card-title">
                     <button type="button" class="btn btn-info btn-block btn-flat btn-sm" data-toggle="modal" data-target="#exampleModalLong">
