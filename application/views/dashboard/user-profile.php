@@ -57,8 +57,8 @@
                             <div class="tab-content">
                                 <!-- /.tab-pane -->
                                 <div class="active tab-pane" id="settings">
-                                    <?= form_open_multipart('UserProfile/editprofile'); ?>
 
+                                    <?= form_open_multipart('UserProfile/editprofile'); ?>
                                     <div class="form-group">
                                         <label for="inputEmail" class="col-sm-2 col-form-label">NIK</label>
                                         <div>

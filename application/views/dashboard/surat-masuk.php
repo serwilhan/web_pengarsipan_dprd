@@ -180,47 +180,47 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="<?= base_url('SuratMasuk/tambah_suratmasuk'); ?>" method="POST">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">No. Surat</label>
-                        <input type="text" class="form-control" id="no_surat" aria-describedby="emailHelp" name="no_surat">
+                <?= form_open_multipart('SuratMasuk/tambah_suratmasuk'); ?>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">No. Surat</label>
+                    <input type="text" class="form-control" id="no_surat" aria-describedby="emailHelp" name="no_surat">
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Tanggal Surat</label>
+                    <input type="date" class="form-control" id="tanggal_surat" name="tanggal_surat">
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Tanggal Diterima</label>
+                    <input type="date" class="form-control" id="tanggal_diterima" name="tanggal_diterima">
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Perihal</label>
+                    <input type="text" class="form-control" id="perihal" name="perihal">
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Pengirim</label>
+                    <input type="text" class="form-control" id="pengirim" name="pengirim">
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Isi Ringkasan</label>
+                    <textarea class="form-control" rows="3" id="isi_ringkasan" name="isi_ringkasan"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="file">Upload File</label>
+
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="file" name="file">
+                        <label class="custom-file-label" for="file">Choose file</label>
                     </div>
+                </div>
 
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Tanggal Surat</label>
-                        <input type="date" class="form-control" id="tanggal_surat" name="tanggal_surat">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Tanggal Diterima</label>
-                        <input type="date" class="form-control" id="tanggal_diterima" name="tanggal_diterima">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Perihal</label>
-                        <input type="text" class="form-control" id="perihal" name="perihal">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Pengirim</label>
-                        <input type="text" class="form-control" id="pengirim" name="pengirim">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Isi Ringkasan</label>
-                        <textarea class="form-control" rows="3" id="isi_ringkasan" name="isi_ringkasan"></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="file">Upload File</label>
-
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="file" name="file">
-                            <label class="custom-file-label" for="file">Choose file</label>
-                        </div>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary float-right">Simpan</button>
+                <button type="submit" class="btn btn-primary float-right">Simpan</button>
                 </form>
             </div>
 

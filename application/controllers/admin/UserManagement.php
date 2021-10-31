@@ -85,39 +85,85 @@ class UserManagement extends CI_Controller {
         redirect(base_url('admin/usermanagement'));
     }
 
-    // public function upload_foto() {
-    //     $this->load->model('m_user');
-    //     $data['current_user'] = $this->auth_model->current_user();
+    public function setAsAdmin($id) {
 
-    //     if ($this->input->method() === 'post') {
-    //         // the user id contain dot, so we must remove it
-    //         $file_name = str_replace('.', '', $data['current_user']->id);
-    //         $config['upload_path']          = FCPATH . '/assets/dist/img/profile';
-    //         $config['allowed_types']        = 'jpg|jpeg|png';
-    //         $config['file_name']            = $file_name;
-    //         $config['overwrite']            = true;
-    //         $config['max_size']             = 1000; // 1MB
-    //         $config['max_width']            = 1080;
-    //         $config['max_height']           = 1080;
+        $role_id = 1;
 
-    //         $this->load->library('upload', $config);
+        $data = array(
+            'role_id' => $role_id,
+        );
 
-    //         if (!$this->upload->do_upload('foto')) {
-    //             $data['error'] = $this->upload->display_errors();
-    //         } else {
-    //             $uploaded_data = $this->upload->data();
+        $where = array(
+            'id' => $id
+        );
 
-    //             $new_data = [
-    //                 'id' => $data['current_user']->id,
-    //                 'foto' => $uploaded_data['file_name'],
-    //             ];
+        $this->load->model('m_user');
+        $this->m_user->update_data($where, $data, 'user');
 
-    //             if ($this->m_user->update($new_data)) {
-    //                 $this->session->set_flashdata('message', 'Avatar updated!');
-    //                 redirect(site_url('admin/setting'));
-    //             }
-    //         }
-    //     }
-    //     $this->load->view('admin/setting_upload_avatar.php', $data);
-    // }
+        $this->session->set_flashdata('user-message', '<div class="alert alert-success" role="alert">
+            User telah diubah menjadi admin.</div>');
+
+        redirect(base_url('admin/usermanagement'));
+    }
+
+    public function setAsUser($id) {
+
+        $role_id = 2;
+
+        $data = array(
+            'role_id' => $role_id,
+        );
+
+        $where = array(
+            'id' => $id
+        );
+
+        $this->load->model('m_user');
+        $this->m_user->update_data($where, $data, 'user');
+
+        $this->session->set_flashdata('user-message', '<div class="alert alert-success" role="alert">
+            User telah diubah menjadi user.</div>');
+
+        redirect(base_url('admin/usermanagement'));
+    }
+
+    public function activateUser($id) {
+        $is_active = 1;
+
+        $data = array(
+            'is_active' => $is_active,
+        );
+
+        $where = array(
+            'id' => $id
+        );
+
+        $this->load->model('m_user');
+        $this->m_user->update_data($where, $data, 'user');
+
+        $this->session->set_flashdata('user-message', '<div class="alert alert-success" role="alert">
+            User berhasil Aktifkan.</div>');
+
+        redirect(base_url('admin/usermanagement'));
+    }
+
+    public function nonActivateUser($id) {
+        $is_active = 0;
+
+        $data = array(
+            'is_active' => $is_active,
+        );
+
+        $where = array(
+            'id' => $id
+        );
+
+        $this->load->model('m_user');
+        $this->m_user->update_data($where, $data, 'user');
+
+        $this->session->set_flashdata('user-message', '<div class="alert alert-success" role="alert">
+            User berhasil dinonaktifkan.</div>');
+
+        redirect(base_url('admin/usermanagement'));
+    }
 }

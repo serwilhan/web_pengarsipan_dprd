@@ -64,6 +64,12 @@
                                 Nomor Telepon
                             </th>
                             <th>
+                                Role
+                            </th>
+                            <th>
+                                Status
+                            </th>
+                            <th>
 
                             </th>
                         </tr>
@@ -85,13 +91,35 @@
                                 <td data-label="Nomor-Telepon">
                                     <?= $data_usr['nomor_telepon']; ?>
                                 </td>
+                                <td>
+                                    <?php if ($data_usr['role_id'] == 1) : ?>
+                                        <span class="badge badge-warning" style="width: 60px;">
+                                            <?= 'Admin'; ?>
+                                        </span>
+                                    <?php else : ?>
+                                        <span class="badge badge-secondary" style="width: 60px;">
+                                            <?= 'User'; ?>
+                                        </span>
+                                    <?php endif; ?>
+                                </td>
+                                <td>
+                                    <?php if ($data_usr['is_active'] == 1) : ?>
+                                        <span class="badge badge-success" style="width: 70px;">
+                                            <?= 'Active'; ?>
+                                        </span>
+                                    <?php else : ?>
+                                        <span class="badge badge-danger" style="width: 70px;">
+                                            <?= 'Inactive'; ?>
+                                        </span>
+                                    <?php endif; ?>
+                                </td>
 
                                 <td class="project-actions text-right">
 
-                                    <a class="btn btn-info btn-sm" href="#">
-                                        <i class="fas fa-pencil-alt">
+                                    <a class="btn btn-info btn-sm" href="<?= base_url(); ?>admin/usermanagement/edituser/<?= $data_usr['id']; ?>" data-toggle="modal" data-target="#editmodal<?= $data_usr['id']; ?>">
+                                        <i class="fas fa-cog">
                                         </i>
-                                        Edit
+                                        Settings
                                     </a>
                                     <a class="btn btn-danger btn-sm" href="<?= base_url(); ?>admin/UserManagement/hapusUser/<?= $data_usr['id']; ?>" onclick="return confirm('Klik ok untuk menghapus user.');">
                                         <i class="fas fa-trash">
@@ -114,7 +142,7 @@
 </div>
 <!-- /.content-wrapper -->
 
-<!-- Modal -->
+<!-- Modal Tambah User -->
 <div class="modal fade bd-example-modal-lg" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -125,7 +153,8 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="<?= base_url('admin/usermanagement/tambahuser'); ?>" method="POST">
+                <form action="<?= base_url(); ?>" method="POST">
+
                     <div class="form-group">
                         <label for="exampleInputEmail1">Nama Lengkap</label>
                         <input type="text" class="form-control" aria-describedby="emailHelp" name="nama" id="nama" value="<?= set_value('nama'); ?>">
@@ -154,14 +183,6 @@
                         <input type="password" class="form-control" id="password2" name="password2">
                     </div>
 
-                    <div class="form-group">
-                        <label for="file">Upload File</label>
-
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="foto" name="foto">
-                            <label class="custom-file-label" for="file">Choose file</label>
-                        </div>
-                    </div>
                     <button type="submit" class="btn btn-primary float-right">Simpan</button>
                 </form>
             </div>
@@ -169,3 +190,43 @@
         </div>
     </div>
 </div>
+
+<!-- Edit Modal -->
+<?php foreach ($data_user as $data_usr) : ?>
+    <div class="modal fade" id="editmodal<?= $data_usr['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleEditModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleEditModal">Edit <strong><?= $data_usr['nama']; ?></strong></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <?php if ($data_usr['role_id'] == 2) : ?>
+                        <form action="<?= base_url(); ?>admin/usermanagement/setasadmin/<?= $data_usr['id']; ?>" method="POST">
+                            <button type="submit" class="btn btn-warning btn-block">Jadikan Sebagai Admin</button>
+                        </form>
+                    <?php else : ?>
+                        <form action="<?= base_url(); ?>admin/usermanagement/setasuser/<?= $data_usr['id']; ?>" method="POST">
+                            <button type="submit" class="btn btn-secondary btn-block">Jadikan Sebagai User</button>
+                        </form>
+                    <?php endif; ?>
+                    <div class="my-2"></div>
+                    <?php if ($data_usr['is_active'] == 1) : ?>
+                        <form action="<?= base_url(); ?>admin/usermanagement/nonactivateuser/<?= $data_usr['id']; ?>" method="POST">
+                            <button type="submit" class="btn btn-danger btn-block">Nonaktifkan User</button>
+                        </form>
+                    <?php else : ?>
+                        <form action="<?= base_url(); ?>admin/usermanagement/activateuser/<?= $data_usr['id']; ?>" method="POST">
+                            <button type="submit" class="btn btn-success btn-block">Aktifkan User</button>
+                        </form>
+                    <?php endif; ?>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endforeach; ?>
