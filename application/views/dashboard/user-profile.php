@@ -4,12 +4,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Profile</h1>
+                    <h1>Edit Profile</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">User Profile</li>
+                        <!-- <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">User Profile</li> -->
                     </ol>
                 </div>
             </div>
@@ -19,6 +19,14 @@
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
+            <?php if (validation_errors()) : ?>
+                <div class="alert alert-danger my-alert-style" role="alert">
+                    <?= validation_errors(); ?>
+                </div>
+            <?php endif; ?>
+
+            <?= $this->session->flashdata('editprofile-message'); ?>
+
             <div class="row">
                 <div class="col-md-3">
 
@@ -26,18 +34,12 @@
                     <div class="card card-primary card-outline">
                         <div class="card-body box-profile">
                             <div class="text-center">
-                                <img class="profile-user-img img-fluid img-circle" src="<?= base_url('assets/dist/img/profile/') . $user['pas_foto']; ?>" alt="User profile picture">
+                                <img class="profile-user-img img-fluid img-circle my-img" src="<?= base_url('assets/dist/img/profile/') . $user['pas_foto']; ?>" alt="User profile picture">
                             </div>
 
                             <h3 class="profile-username text-center"><?= $user['nama']; ?></h3>
 
-                            <p class="text-muted text-center"><?= $user['nik']; ?></p>
-
-                            <hr class="sidebar-divider my-0">
-
-                            <div class="card-footer bg-transparent border-success">
-                                <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
-                            </div>
+                            <p class="text-muted text-center">NIK : <?= $user['nik']; ?></p>
 
                         </div>
                         <!-- /.card-body -->
@@ -48,42 +50,48 @@
                 <!-- /.col -->
                 <div class="col-md-9">
                     <div class="card">
-                        <div class="card-header p-2">
-                            <ul class="nav nav-pills">
-                                <li class="nav-item"><a class="nav-link" href="#activity" data-toggle="tab">Activity</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Timeline</a></li>
-                                <li class="nav-item"><a class="nav-link active" href="#settings" data-toggle="tab">Settings</a></li>
-                            </ul>
+                        <div class="card-primary card-outline p-2">
+
                         </div><!-- /.card-header -->
                         <div class="card-body">
                             <div class="tab-content">
-
                                 <!-- /.tab-pane -->
                                 <div class="active tab-pane" id="settings">
-                                    <form class="form-horizontal">
-                                        <div class="form-group row">
-                                            <label for="inputName" class="col-sm-2 col-form-label">Nama</label>
-                                            <div class="col-sm-10">
-                                                <input type="email" class="form-control" id="inputName" placeholder="Name">
-                                            </div>
+                                    <?= form_open_multipart('UserProfile/editprofile'); ?>
+
+                                    <div class="form-group">
+                                        <label for="inputEmail" class="col-sm-2 col-form-label">NIK</label>
+                                        <div>
+                                            <input type="text" class="form-control" id="inputEmail" placeholder="Email" value="<?= $user['nik']; ?>" readonly>
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="inputEmail" class="col-sm-2 col-form-label">NIK</label>
-                                            <div class="col-sm-10">
-                                                <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-                                            </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputName" class="col-sm-2 col-form-label">Nama</label>
+                                        <div>
+                                            <input type="text" class="form-control" id="nama" name="nama" placeholder="Name" value="<?= $user['nama']; ?>">
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="inputName2" class="col-sm-2 col-form-label">Nomor Telepon</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="inputName2" placeholder="Name">
-                                            </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="inputName2" class="col-sm-2 col-form-label">Nomor Telepon</label>
+                                        <div>
+                                            <input type="text" class="form-control" id="nomor_telepon" name="nomor_telepon" placeholder="Name" value="<?= $user['nomor_telepon']; ?>">
                                         </div>
-                                        <div class="form-group row">
-                                            <div class="offset-sm-2 col-sm-10">
-                                                <button type="submit" class="btn btn-danger">Submit</button>
-                                            </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="pas_foto" class="col-sm-2 col-form-label">Foto</label>
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="pas_foto" name="pas_foto">
+                                            <label class="custom-file-label" for="pas_foto">Choose file</label>
                                         </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="float-right">
+                                            <button type="submit" class="btn btn-primary">Simpan</button>
+                                        </div>
+                                    </div>
                                     </form>
                                 </div>
                                 <!-- /.tab-pane -->

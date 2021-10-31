@@ -14,10 +14,10 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="<?= base_url('assets/dist/img/profile/') . $user['pas_foto']; ?>" class="img-circle elevation-2" alt="User Image">
+                <img src="<?= base_url('assets/dist/img/profile/') . $user['pas_foto']; ?>" class="img-circle elevation-2" alt="User Image" style="width: 35px; height: 35px; object-fit: cover;">
             </div>
             <div class="info">
-                <a href="#" class="d-block"><?= $user['nama']; ?></a>
+                <a href="<?= base_url('userprofile'); ?>" class="d-block"><?= $user['nama']; ?></a>
             </div>
         </div>
 

@@ -18,3 +18,9 @@
 	width: 1em;
 	margin-left: -1em;
 } */
+
+.my-img {
+	width: 100px;
+	height: 100px;
+	object-fit: cover;
+}

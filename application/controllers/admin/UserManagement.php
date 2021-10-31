@@ -68,11 +68,21 @@ class UserManagement extends CI_Controller {
 
             $this->db->insert('user', $data);
 
-            $this->session->set_flashdata('adduser-message', '<div class="alert alert-danger" role="alert">
-            Data berhasil disimpan.</div>');
+            $this->session->set_flashdata('user-message', '<div class="alert alert-success" role="alert">
+            User berhasil ditambahkan.</div>');
 
             redirect(base_url('admin/usermanagement'));
         }
+    }
+
+    public function hapusUser($id) {
+        $this->load->model('m_user');
+        $this->m_user->delete_data($id);
+
+        $this->session->set_flashdata('user-message', '<div class="alert alert-success" role="alert">
+        User berhasil dihapus.</div>');
+
+        redirect(base_url('admin/usermanagement'));
     }
 
     // public function upload_foto() {

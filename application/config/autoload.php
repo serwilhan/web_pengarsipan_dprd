@@ -134,5 +134,6 @@ $autoload['language'] = array();
 */
 $autoload['model'] = array(
     'm_suratmasuk',
-    'm_suratkeluar'
+    'm_suratkeluar',
+    'm_user'
 );

@@ -9,8 +9,8 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">User Management</li>
+                        <!-- <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">User Management</li> -->
                     </ol>
                 </div>
             </div>
@@ -20,15 +20,16 @@
     <!-- Main content -->
     <section class="content">
         <!-- Default box -->
+        <?php if ($this->session->flashdata('user-message')) : ?>
+            <?= $this->session->flashdata('user-message'); ?>
+        <?php endif; ?>
+
+        <?php if (validation_errors()) : ?>
+            <div class="alert alert-danger my-alert-style" role="alert">
+                <?= validation_errors(); ?>
+            </div>
+        <?php endif; ?>
         <div class="card">
-            <?php if (validation_errors()) : ?>
-                <div class="alert alert-danger my-alert-style" role="alert">
-                    <?= validation_errors(); ?>
-                </div>
-            <?php endif; ?>
-
-            <?= $this->session->flashdata('adduser-message'); ?>
-
             <div class="card-header">
                 <div class="card-title">
                     <button type="button" class="btn btn-info btn-block btn-flat btn-sm" data-toggle="modal" data-target="#exampleModalLong">
@@ -75,7 +76,7 @@
                             <tr>
                                 <td data-label="No"><?= $no++; ?></td>
                                 <td data-label="Nama">
-                                    <img alt="Avatar" class="table-avatar" src="<?= base_url('assets/dist/img/profile/') . $user['pas_foto']; ?>">
+                                    <img alt="Avatar" class="table-avatar" src="<?= base_url('assets/dist/img/profile/') . $data_usr['pas_foto']; ?>">
                                     <a style="margin-left: 10px;"><?= $data_usr['nama']; ?></a>
                                 </td>
                                 <td data-label="NIK">
@@ -86,17 +87,13 @@
                                 </td>
 
                                 <td class="project-actions text-right">
-                                    <a class="btn btn-primary btn-sm" href="#">
-                                        <i class="fas fa-folder">
-                                        </i>
-                                        View
-                                    </a>
+
                                     <a class="btn btn-info btn-sm" href="#">
                                         <i class="fas fa-pencil-alt">
                                         </i>
                                         Edit
                                     </a>
-                                    <a class="btn btn-danger btn-sm" href="#">
+                                    <a class="btn btn-danger btn-sm" href="<?= base_url(); ?>admin/UserManagement/hapusUser/<?= $data_usr['id']; ?>" onclick="return confirm('Klik ok untuk menghapus user.');">
                                         <i class="fas fa-trash">
                                         </i>
                                         Delete

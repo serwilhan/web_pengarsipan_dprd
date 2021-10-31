@@ -10,6 +10,10 @@ class LoginPage extends CI_Controller {
 
     public function index() {
 
+        if ($this->session->userdata('nik')) {
+            redirect('dashboard');
+        }
+
         $this->form_validation->set_rules('nik', 'NIK', 'required|trim');
         $this->form_validation->set_rules('password', 'Password', 'required|trim');
 
