@@ -3,6 +3,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class UserProfile extends CI_Controller {
 
+    public function __construct() {
+        parent::__construct();
+        if (!$this->session->userdata('nik')) {
+            redirect('loginpage');
+        }
+    }
+
     public function index() {
 
         $data['title'] = 'E-Dokumen - Edit Profile';

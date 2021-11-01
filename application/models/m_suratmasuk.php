@@ -25,4 +25,16 @@ class M_suratmasuk extends CI_Model {
     public function getSuratById($id) {
         return $this->db->get_where('surat_masuk', ['id' => $id])->row_array();
     }
+
+    // public function get_keyword($keyword) {
+    //     $this->db->select('*');
+    //     $this->db->from('surat_masuk');
+    //     $this->db->like('no_surat', $keyword);
+    //     $this->db->or_like('tanggal_surat', $keyword);
+    //     $this->db->or_like('tanggal_diterima', $keyword);
+    //     $this->db->or_like('perihal', $keyword);
+    //     $this->db->or_like('pengirim', $keyword);
+    //     $this->db->or_like('perihal', $keyword);
+    //     return $this->db->get()->result();
+    // }
 }

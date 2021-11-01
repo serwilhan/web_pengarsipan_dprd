@@ -44,15 +44,6 @@
                                 </button>
                             </div>
 
-                            <div class="input-group input-group-sm float-right" style="width: 150px;">
-                                <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
-                                <div class="input-group-append">
-                                    <button type="submit" class="btn btn-default">
-                                        <i class="fas fa-search"></i>
-                                    </button>
-                                </div>
-                            </div>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body table-responsive p-0">
@@ -119,7 +110,8 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="<?= base_url(); ?>suratmasuk/editsurat/<?= $data_sm['id']; ?>" method="POST">
+                    <form action="<?= base_url(); ?>suratmasuk/editsurat/<?= $data_sm['id']; ?>" method="POST" enctype="multipart/form-data">
+
                         <input type="hidden" name="id" id="id" value="<?= $data_sm['id']; ?>">
                         <div class="form-group">
                             <label for="exampleInputEmail1">No. Surat</label>
@@ -152,11 +144,10 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="file">Upload File</label>
-
+                            <label for="file" class="col-sm-2 col-form-label">File PDF</label>
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" id="file" name="file">
-                                <label class="custom-file-label" for="file">Choose file</label>
+                                <label class="custom-file-label" for="file"><?= $data_sm['file']; ?></label>
                             </div>
                         </div>
 
@@ -212,10 +203,9 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="file">Upload File</label>
-
+                    <label for="file" class="col-sm-2 col-form-label">File PDF</label>
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="file" name="file">
+                        <input type="file" class="custom-file-input" id="file" name="file" required>
                         <label class="custom-file-label" for="file">Choose file</label>
                     </div>
                 </div>

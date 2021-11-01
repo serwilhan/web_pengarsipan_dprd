@@ -3,6 +3,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class SuratKeluar extends CI_Controller {
 
+    public function __construct() {
+        parent::__construct();
+        if (!$this->session->userdata('nik')) {
+            redirect('loginpage');
+        }
+    }
+
     public function index() {
         $data['page'] = 'Surat Keluar';
         $data['title'] = 'E-Dokumen - Surat Keluar';
@@ -22,7 +29,7 @@ class SuratKeluar extends CI_Controller {
         $this->form_validation->set_rules('no_surat', 'Nomor Surat', 'required|trim', [
             'required' => "Nomor Surat tidak boleh kosong."
         ]);
-        $this->form_validation->set_rules('tanggal-surat', 'Tanggal Surat', 'required', [
+        $this->form_validation->set_rules('tanggal_surat', 'Tanggal Surat', 'required', [
             'required' => "Tanggal Surat tidak boleh kosong."
         ]);
         $this->form_validation->set_rules('perihal', 'Perihal', 'required', [
@@ -53,7 +60,22 @@ class SuratKeluar extends CI_Controller {
             $perihal = $this->input->post('perihal');
             $penerima = $this->input->post('penerima');
             $isi_ringkasan = $this->input->post('isi_ringkasan');
-            $file = $this->input->post('file');
+
+            $file = $_FILES['file']['name'];
+
+            if ($file) {
+                $config['upload_path'] = './assets/dist/file/';
+                $config['allowed_types'] = 'pdf';
+                $config['max_size']     = '2048';
+
+                $this->load->library('upload', $config);
+
+                if ($this->upload->do_upload('file')) {
+                    $new_file = $this->upload->data('file_name');
+                } else {
+                    $this->upload->display_errors();
+                }
+            }
 
             $data = array(
                 'no_surat' => $no_surat,
@@ -61,12 +83,12 @@ class SuratKeluar extends CI_Controller {
                 'perihal' => $perihal,
                 'penerima' => $penerima,
                 'isi_ringkasan' => $isi_ringkasan,
-                'file' => $file
+                'file' => $new_file
             );
 
             $this->m_suratkeluar->save_data($data, 'surat_keluar');
 
-            $this->session->set_flashdata('suratkeluar-message', '<div class="alert alert-danger" role="alert">
+            $this->session->set_flashdata('suratkeluar-message', '<div class="alert alert-success" role="alert">
             Data berhasil disimpan.</div>');
 
             redirect('SuratKeluar');
@@ -111,7 +133,24 @@ class SuratKeluar extends CI_Controller {
             $perihal = $this->input->post('perihal');
             $penerima = $this->input->post('penerima');
             $isi_ringkasan = $this->input->post('isi_ringkasan');
-            $file = $this->input->post('file');
+
+            $file = $_FILES['file']['name'];
+
+            if ($file) {
+                $config['upload_path'] = './assets/dist/file/';
+                $config['allowed_types'] = 'pdf';
+                $config['max_size']     = '2048';
+
+                $this->load->library('upload', $config);
+
+                if ($this->upload->do_upload('file')) {
+
+                    $new_file = $this->upload->data('file_name');
+                } else {
+
+                    $this->upload->display_errors();
+                }
+            }
 
             $data = array(
                 'id' => $id,
@@ -120,7 +159,7 @@ class SuratKeluar extends CI_Controller {
                 'perihal' => $perihal,
                 'penerima' => $penerima,
                 'isi_ringkasan' => $isi_ringkasan,
-                'file' => $file
+                'file' => $new_file
             );
 
             $where = array(

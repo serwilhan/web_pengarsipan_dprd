@@ -114,7 +114,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="<?= base_url(); ?>suratkeluar/editsurat/<?= $data_sk['id']; ?>" method="POST">
+                    <form action="<?= base_url(); ?>suratkeluar/editsurat/<?= $data_sk['id']; ?>" method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="id" id="id" value="<?= $data_sk['id']; ?>">
                         <div class="form-group">
                             <label for="exampleInputEmail1">No. Surat</label>
@@ -142,11 +142,10 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="file">Upload File</label>
-
+                            <label for="file" class="col-sm-2 col-form-label">File PDF</label>
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" id="file" name="file">
-                                <label class="custom-file-label" for="file">Choose file</label>
+                                <label class="custom-file-label" for="file"><?= $data_sk['file']; ?></label>
                             </div>
                         </div>
 
@@ -171,7 +170,7 @@
             </div>
             <div class="modal-body">
 
-                <form action="<?= base_url('SuratKeluar/tambah_suratkeluar'); ?>" method="POST">
+                <form action="<?= base_url('SuratKeluar/tambah_suratkeluar'); ?>" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="exampleInputEmail1">No. Surat</label>
                         <input type="text" class="form-control" id="no_surat" aria-describedby="emailHelp" name="no_surat">
@@ -198,10 +197,9 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="file">Upload File</label>
-
+                        <label for="file" class="col-sm-2 col-form-label">File PDF</label>
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="file" name="file">
+                            <input type="file" class="custom-file-input" id="file" name="file" required>
                             <label class="custom-file-label" for="file">Choose file</label>
                         </div>
                     </div>

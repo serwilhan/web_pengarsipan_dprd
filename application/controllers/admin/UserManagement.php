@@ -6,6 +6,10 @@ class UserManagement extends CI_Controller {
     function __construct() {
         parent::__construct();
         $this->load->library('form_validation');
+
+        if (!$this->session->userdata('nik')) {
+            redirect('loginpage');
+        }
     }
 
     public function index() {

@@ -3,6 +3,14 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class SuratMasuk extends CI_Controller {
 
+    public function __construct() {
+        parent::__construct();
+        if (!$this->session->userdata('nik')) {
+            redirect('loginpage');
+        }
+    }
+
+
     public function index() {
         $data['page'] = 'Surat Masuk';
         $data['title'] = 'E-Dokumen - Surat Masuk';
@@ -17,6 +25,7 @@ class SuratMasuk extends CI_Controller {
         $this->load->view('dashboard/surat-masuk', $data);
         $this->load->view('dashboard/wrapper/footer');
     }
+
 
     public function tambah_suratmasuk() {
 
@@ -55,7 +64,22 @@ class SuratMasuk extends CI_Controller {
             $perihal = $this->input->post('perihal');
             $pengirim = $this->input->post('pengirim');
             $isi_ringkasan = $this->input->post('isi_ringkasan');
-            $file = $this->input->post('file');
+
+            $file = $_FILES['file']['name'];
+
+            if ($file) {
+                $config['upload_path'] = './assets/dist/file/';
+                $config['allowed_types'] = 'pdf';
+                $config['max_size']     = '2048';
+
+                $this->load->library('upload', $config);
+
+                if ($this->upload->do_upload('file')) {
+                    $new_file = $this->upload->data('file_name');
+                } else {
+                    $this->upload->display_errors();
+                }
+            }
 
             $data = array(
                 'no_surat' => $no_surat,
@@ -64,12 +88,12 @@ class SuratMasuk extends CI_Controller {
                 'perihal' => $perihal,
                 'pengirim' => $pengirim,
                 'isi_ringkasan' => $isi_ringkasan,
-                'file' => $file
+                'file' => $new_file
             );
 
             $this->m_suratmasuk->save_data($data, 'surat_masuk');
 
-            $this->session->set_flashdata('suratmasuk-message', '<div class="alert alert-danger" role="alert">
+            $this->session->set_flashdata('suratmasuk-message', '<div class="alert alert-success" role="alert">
             Data berhasil disimpan.</div>');
 
             redirect('SuratMasuk');
@@ -120,7 +144,24 @@ class SuratMasuk extends CI_Controller {
             $perihal = $this->input->post('perihal');
             $pengirim = $this->input->post('pengirim');
             $isi_ringkasan = $this->input->post('isi_ringkasan');
-            $file = $this->input->post('file');
+
+            $file = $_FILES['file']['name'];
+
+            if ($file) {
+                $config['upload_path'] = './assets/dist/file/';
+                $config['allowed_types'] = 'pdf';
+                $config['max_size']     = '2048';
+
+                $this->load->library('upload', $config);
+
+                if ($this->upload->do_upload('file')) {
+                    $new_file = $this->upload->data('file_name');
+
+                    // $this->db->set('file', $new_file);
+                } else {
+                    $new_file = 'File';
+                }
+            }
 
             $data = array(
                 'id' => $id,
@@ -130,7 +171,7 @@ class SuratMasuk extends CI_Controller {
                 'perihal' => $perihal,
                 'pengirim' => $pengirim,
                 'isi_ringkasan' => $isi_ringkasan,
-                'file' => $file
+                'file' => $new_file
             );
 
             // $this->db->get_where('surat_masuk', ['id' => $id])->row_array();
